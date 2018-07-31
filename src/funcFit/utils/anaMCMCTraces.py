@@ -204,7 +204,7 @@ class TraceAnalysis:
         self.emceechain = np.zeros((nchains * (s[1] - burn), s[2] + 3))
         self.emceechain[::, 0:-3] = self._emceedat["chain"][selectedWalker,
                                                             burn:, ::].reshape(nchains * (s[1] - burn), s[2])
-        
+
         def getprop(prop):
             print("xxx: ", prop, self._emceedat[prop].shape)
             c = self._emceedat[prop][selectedWalker, burn:]

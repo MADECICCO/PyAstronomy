@@ -17,7 +17,6 @@ import scipy.optimize as sco
 import inspect
 
 from PyAstronomy.funcFit import _pymcImport, _scoImport, ic
-from quantities.units.power import kW
 
 if ic.check["progressbar"]:
     import progressbar
@@ -648,7 +647,6 @@ class PStat(object):
         else:
             m = self.evaluate(x)
         
-#         print( -len(x)/2.0*np.log(2.*np.pi), - np.sum(np.log(yerr)), - 0.5 * np.sum((m-y)**2/(yerr**2)) )
         return -len(x)/2.0*np.log(2.*np.pi) - np.sum(np.log(yerr)) - 0.5 * np.sum((m-y)**2/(yerr**2))
         
     def logPost(self, *args, **kwargs):
@@ -663,6 +661,7 @@ class PStat(object):
             return po, (lp, ll)
         
         return po
+
 
     def emceeLogPost(self, *args, **kwargs):
         """ Get the log of the posterior assuming that first parameter is an array of free parameter values """
@@ -1130,8 +1129,6 @@ def sampleEMCEE2(m, pargs=(), walkerdimfac=4, scales=None,
             else:
                 print("EMCEE: Reached iteration ",
                       n, " of ", sampleArgs["iters"])
-    
-    print(emceeSampler.blobs)
     
     # Save the chain to a file
     if not dbfile is None:
