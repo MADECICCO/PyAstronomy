@@ -36,7 +36,6 @@ from .coordinateGrid import *
 from .circle2d import *
 from .extFitter import NelderMead
 from .fufDS import FufDS
-from .fbo2 import *
 
 if ic.check["scipy"]:
   from .voigt1d import *
